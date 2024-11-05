@@ -6,7 +6,7 @@ const { getToDo, saveToDo, updateToDo, deleteToDo } = require('../controllers/to
 router.get('/', getToDo);
 
 // Create a new todo
-router.post('/save', saveToDo);
+router.post('/create', saveToDo);
 
 // Update an existing todo by ID
 router.put('/update/:id', updateToDo);

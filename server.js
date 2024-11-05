@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const routes = require('./routes/todolist');
-
+const todoRoutes = require('./routes/todolist');  
+const noteRoutes = require('./routes/noteroute');
 require('dotenv').config();
 
 const app = express();
@@ -19,7 +19,8 @@ app.use(express.json());
 app.use(cors());
 
 // Set up routes before starting the server
-app.use(routes);
+app.use('/todos', todoRoutes);   // For todo functions
+app.use('/notes', noteRoutes);
 
 // Start the server
 app.listen(PORT, () => {
