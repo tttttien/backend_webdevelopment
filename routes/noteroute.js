@@ -136,12 +136,12 @@ const { getNotes, createNote, updateNote, deleteNote } = require('../controllers
 router.get('/', getNotes);
 
 // Create a new note
-router.post('/create', createNote);
+router.post('/', createNote);
 
 // Update an existing note by ID
-router.put('/update/:id', updateNote);
+router.put('/:id', updateNote);
 
 // Delete a note by ID
-router.delete('/delete/:id', deleteNote);
+router.delete('/:id', deleteNote);
 
 module.exports = router;

@@ -12,10 +12,9 @@ module.exports.getToDo = async (req, res) => {
 
 // Create a new todo
 module.exports.saveToDo = async (req, res) => {
-    const { text } = req.body;
+    const { title, completed} = req.body;
     try {
-        const newToDo = await ToDoModel.create({ text });
-        console.log("Added successfully", newToDo);
+        const newToDo = await ToDoModel.create({ title, completed });
         res.status(201).json(newToDo);
     } catch (error) {
         res.status(400).json({ message: error.message });

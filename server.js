@@ -1,10 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const cookieParser=require('cookie-parser')
 const swaggerjsdoc = require('swagger-jsdoc');
 const swaggerui = require('swagger-ui-express');
 const todoRoutes = require('./routes/todolist');  
 const noteRoutes = require('./routes/noteroute');
+const authRoutes = require('./routes/authroute');
+
 require('dotenv').config();
 
 const app = express();
@@ -19,16 +22,19 @@ mongoose
 // Middleware
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 // Set up routes before starting the server
-app.use('/todos', todoRoutes);   // For todo functions
+app.use('/todos', todoRoutes);   
 app.use('/notes', noteRoutes);
+app.use('/users', authRoutes);
 
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
+//API documentation
 const options = {
   definition: {
     openapi: "3.0.0",

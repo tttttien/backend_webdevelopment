@@ -132,12 +132,12 @@ const { getToDo, saveToDo, updateToDo, deleteToDo } = require('../controllers/to
 router.get('/', getToDo);
 
 // Create a new todo
-router.post('/create', saveToDo);
+router.post('/', saveToDo);
 
 // Update an existing todo by ID
-router.put('/update/:id', updateToDo);
+router.put('/:id', updateToDo);
 
 // Delete a todo by ID
-router.delete('/delete/:id', deleteToDo);
+router.delete('/:id', deleteToDo);
 
 module.exports = router;
