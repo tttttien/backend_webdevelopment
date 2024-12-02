@@ -12,7 +12,7 @@ module.exports.getToDo = async (req, res) => {
 
 // Create a new todo
 module.exports.saveToDo = async (req, res) => {
-    const { title, completed} = req.body;
+    const { title, completed } = req.body; // Capture title and completed from the request body
     try {
         const newToDo = await ToDoModel.create({ title, completed });
         res.status(201).json(newToDo);
@@ -24,9 +24,9 @@ module.exports.saveToDo = async (req, res) => {
 // Update a todo by ID
 module.exports.updateToDo = async (req, res) => {
     const { id } = req.params;
-    const { text } = req.body;
+    const { title, completed } = req.body; // Allow both title and completed to be updated
     try {
-        const updatedToDo = await ToDoModel.findByIdAndUpdate(id, { text }, { new: true });
+        const updatedToDo = await ToDoModel.findByIdAndUpdate(id, { title, completed }, { new: true });
         if (!updatedToDo) return res.status(404).json({ message: "ToDo not found" });
         res.status(200).json(updatedToDo);
     } catch (error) {
